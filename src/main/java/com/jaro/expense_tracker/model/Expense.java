@@ -1,5 +1,6 @@
 package com.jaro.expense_tracker.model;
 
+
 //Imports
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,16 +24,17 @@ public class Expense {
     protected LocalDate date;
     protected String title;
     protected BigDecimal amount;
-    protected String category;
 
 
-    public Expense(String title, BigDecimal amount, String category, LocalDate date){
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public Expense(String title, BigDecimal amount, Category category, LocalDate date){
         this.title = title;
         this.amount = amount;
-        this.category = category;
         this.date = date;
     }
-
 
 
 }
