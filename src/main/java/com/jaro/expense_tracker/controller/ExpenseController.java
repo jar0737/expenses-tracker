@@ -33,7 +33,7 @@ public class ExpenseController {
 
     // READ ONE
     @GetMapping("/{id}")
-    public Optional<Expense> getExpenseById(@PathVariable Long id) {
+    public Expense getExpenseById(@PathVariable Long id) {
         return expenseService.getExpenseById(id);
     }
 

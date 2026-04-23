@@ -1,34 +1,22 @@
 package com.jaro.expense_tracker.service;
 
+import com.jaro.expense_tracker.exceptions.ResourceNotFoundException;
 import com.jaro.expense_tracker.model.Expense;
 import com.jaro.expense_tracker.repository.ExpenseRepository;
 import org.springframework.stereotype.Service;
+import com.jaro.expense_tracker.exceptions.ResourceNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ExpenseService {
+public interface ExpenseService {
+    Expense saveExpense(Expense expense);
 
-    private final ExpenseRepository expenseRepository;
+    List<Expense> getAllExpenses();
 
-    public ExpenseService(ExpenseRepository expenseRepository) {
-        this.expenseRepository = expenseRepository;
-    }
+    Expense getExpenseById(Long id);
 
-    public Expense saveExpense(Expense expense) {
-        return expenseRepository.save(expense);
-    }
+    void deleteExpense(Long id);
 
-    public List<Expense> getAllExpenses() {
-        return expenseRepository.findAll();
-    }
-
-    public Optional<Expense> getExpenseById(Long id) {
-        return expenseRepository.findById(id);
-    }
-
-    public void deleteExpense(Long id) {
-        expenseRepository.deleteById(id);
-    }
 }

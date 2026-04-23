@@ -31,7 +31,7 @@ public class CategoryController {
 
     // READ ONE
     @GetMapping("/{id}")
-    public Optional<Category> getCategoryById(@PathVariable Long id) {
+    public Category getCategoryById(@PathVariable Long id) {
         return categoryService.getCategoryById(id);
     }
 
